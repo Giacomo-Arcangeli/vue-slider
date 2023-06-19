@@ -23,15 +23,15 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="root">
-        <div class="container">
-            <div id="carousel">
-                <i class="fa-solid fa-arrow-up" id="prev"></i>
-                <div class="gallery">
-                    <img v-for="(source, i) in sources" :src="source.image" :alt="source.text" :title="source.title" :class="{{active: currentIndex === i}}">
-                </div>
-                <i class="fa-solid fa-arrow-down" id="next"></i>
+    <div id="root" class="container">
+        <div id="carousel">
+            <i class="fa-solid fa-arrow-up" id="prev" @click="goPrev"></i>
+            <div v-for="(source, i) in sources" v-show="currentIndex === i" class="gallery">
+                <img :src="source.image">
+                <h3 class="my-3">{{ source.title }}</h3>
+                <p>{{ source.text }}</p>
             </div>
+            <i class="fa-solid fa-arrow-down" id="next" @click="goNext"></i>
         </div>
     </div>
 </body>
